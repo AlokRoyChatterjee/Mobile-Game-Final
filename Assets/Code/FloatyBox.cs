@@ -21,11 +21,15 @@ public class FloatyBox : MonoBehaviour
     private bool seenJump = false;  // indicates whether a jump has happened - used to avoid multiple jump touch strokes during liftoff
     private bool fallGrace = false; // grace period before allowing fall
 
+    public AudioClip saw;
+
     Rigidbody2D _rigidbody;
     static int val=0;
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        GetComponent<AudioSource> ().playOnAwake = false;
+        GetComponent<AudioSource> ().clip = saw;
     }
 private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -34,6 +38,7 @@ private void OnTriggerEnter2D(Collider2D collision)
             Debug.Log("Triggered");
             val+=1;
             newscore.text=""+val;
+            GetComponent<AudioSource> ().Play ();
             Destroy(collision.gameObject);
         }
     }

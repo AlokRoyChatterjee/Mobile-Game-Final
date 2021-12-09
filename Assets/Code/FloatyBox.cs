@@ -8,6 +8,7 @@ public class FloatyBox : MonoBehaviour
 {
 
     public float moveForce; // how fast to move
+    public Animator animator;
 
     public float jumpForce;
     public float fallForce;
@@ -22,14 +23,17 @@ public class FloatyBox : MonoBehaviour
     private bool fallGrace = false; // grace period before allowing fall
 
     public AudioClip saw;
+    public AudioSource _as;
+    float horizontalMove = 0f;
 
     Rigidbody2D _rigidbody;
     static int val=0;
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        GetComponent<AudioSource> ().playOnAwake = false;
-        GetComponent<AudioSource> ().clip = saw;
+        _as = GetComponent<AudioSource> ();
+        //GetComponent<AudioSource> ().playOnAwake = false;
+        //GetComponent<AudioSource> ().clip = saw;
     }
 private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -38,12 +42,16 @@ private void OnTriggerEnter2D(Collider2D collision)
             Debug.Log("Triggered");
             val+=1;
             newscore.text=""+val;
-            GetComponent<AudioSource> ().Play ();
+            //GetComponent<AudioSource> ().Play ();
+            _as.PlayOneShot(saw);
             Destroy(collision.gameObject);
         }
     }
     void Update()
     {
+        horizontalMove = Input.GetAxisRaw("Horizontal");
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+
         for (int i = 0; i < Input.touchCount; ++i)
         {
             // get ground collision

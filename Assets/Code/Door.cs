@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class Door : MonoBehaviour
 {
+    public string nextScene; 
+
     private void OnTriggerEnter2D(Collider2D other){
-        SceneManager.LoadScene("Medium Level");
+        SceneManager.LoadScene(nextScene);
     }
 }

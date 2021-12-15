@@ -19,20 +19,20 @@ public class Timer : MonoBehaviour
         if (secondsnow < 0)
         {
             if(int.Parse(score.text)<10){
-                timestring.text="Game Over: Your score has no medal. This level is restarting now...";
+                timestring.text="Your score=no medal.Loading Next Level...";
             }
             else if(int.Parse(score.text)>=10 && int.Parse(score.text)<20){
-            timestring.text="Game Over: Your score is a bronze medal. This level is restarting now...";
+            timestring.text="Your score=bronze medal.Loading Next Level...";
             }
             else if(int.Parse(score.text)>=20 && int.Parse(score.text)<35){
-                timestring.text="Game Over: Your score is a silver medal. This level is restarting now...";
+                timestring.text="Your score=silver medal.Loading Next Level...";
             }
             else if(int.Parse(score.text)>=35){
-                timestring.text="Game Over: Your score is a gold medal. This level is restarting now...";
+                timestring.text="Your score=gold medal.Loading Next Level...";
             }
         }
         if(otherseconds<0){
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
         

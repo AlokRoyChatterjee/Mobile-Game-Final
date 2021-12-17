@@ -1470,9 +1470,9 @@ void RegisterAllStrippedInternalCalls()
 
 	//Start Registrations for type : UnityEngine.SceneManagement.Scene
 
-		//System.String UnityEngine.SceneManagement.Scene::GetNameInternal(System.Int32)
-		void Register_UnityEngine_SceneManagement_Scene_GetNameInternal();
-		Register_UnityEngine_SceneManagement_Scene_GetNameInternal();
+		//System.Int32 UnityEngine.SceneManagement.Scene::GetBuildIndexInternal(System.Int32)
+		void Register_UnityEngine_SceneManagement_Scene_GetBuildIndexInternal();
+		Register_UnityEngine_SceneManagement_Scene_GetBuildIndexInternal();
 
 	//End Registrations for type : UnityEngine.SceneManagement.Scene
 
